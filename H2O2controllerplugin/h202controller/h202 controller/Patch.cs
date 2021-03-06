@@ -32,8 +32,12 @@ namespace h202_controller
             public static void TestPatchMethod(MyGasGenerator __instance) {
                 try
                 {
-                    ((IMyGasGenerator) __instance).ProductionCapacityMultiplier = H202Core.Instance.Config.Production;
-                    ((IMyGasGenerator) __instance).PowerConsumptionMultiplier = H202Core.Instance.Config.Power;
+                    if (H202Core.Instance.Config.Enabled)
+                    {
+                        ((IMyGasGenerator) __instance).ProductionCapacityMultiplier = H202Core.Instance.Config.Production;
+                        ((IMyGasGenerator) __instance).PowerConsumptionMultiplier = H202Core.Instance.Config.Power;
+                    }    
+                    
                 }
                 catch (Exception e)
                 {
